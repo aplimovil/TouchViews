@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,51 +18,58 @@ class ViewController: UIViewController {
         let halfWidth = view.frame.width / 2
         let halfHeight = view.frame.height / 2
         
-        let viewA = UIView(frame: CGRect(
+        let viewA = ColoredView(frame: CGRect(
             x: margin,
             y: margin,
             width: halfWidth,
             height: halfWidth
-            ))
+        ))
         viewA.backgroundColor = UIColor.random
         self.view.addSubview(viewA)
         
-        let viewB = UIView(frame: CGRect(
+        let viewB = ColoredView(frame: CGRect(
             x: view.frame.width - halfWidth - margin,
             y: (view.frame.height / 2) - halfWidth,
             width: halfWidth,
             height: halfWidth
-            ))
+        ))
         viewB.backgroundColor = UIColor.random
         self.view.addSubview(viewB)
         
-        let viewC = UIView(frame: CGRect(
+        let viewC = ColoredView(frame: CGRect(
             x: margin,
             y: halfHeight + margin,
             width: view.frame.width - (margin * 2),
             height: halfHeight - (margin * 2)
-            ))
+        ))
         viewC.backgroundColor = UIColor.random
         self.view.addSubview(viewC)
         
-        let viewD = UIView(frame: CGRect(
+        let viewD = ColoredView(frame: CGRect(
             x: (view.frame.width / 2) - margin,
             y: margin,
             width: halfWidth - margin * 2,
             height: viewC.frame.height - (margin * 2)
-            ))
+        ))
         viewD.backgroundColor = UIColor.random
         viewC.addSubview(viewD)                     // View D is a subview of view C
         
         
         self.view.backgroundColor = UIColor.random
     }
-
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event:UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        //Sets a random background color also for Controller
+        self.view.backgroundColor = UIColor.random
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
